@@ -4,15 +4,7 @@ from django.contrib.auth.models import User
 from django.db import models
 
 
-class Institution(models.Model):
-    institution_name=models.CharField(max_length=500)
-    country=models.CharField(max_length=100)
-    city=models.CharField(max_length=150)
-    erasmusCN=models.CharField(max_length=150) #ERASMUS Charter Number
-    website = models.CharField(max_length=500)
 
-    def __str__(self):
-        return self.institution_name
 
 
 class Programme(models.Model):
@@ -25,7 +17,7 @@ class Programme(models.Model):
 # Create your models here.
 class UserAttribute(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    institution= models.ForeignKey(Institution, on_delete=models.CASCADE,blank=True,null=True)
+    #institution= models.(Institution, on_delete=models.CASCADE,blank=True,null=True)
     fullname=models.CharField(max_length=200)
     contact_email = models.EmailField()
     contact_phone = models.CharField(max_length=25, blank=True, null=True)
@@ -33,15 +25,31 @@ class UserAttribute(models.Model):
     def __str__(self):
         return self.fullname
 
-
-class SubmitRequest(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    # institution= models.ForeignKey(Institution, on_delete=models.CASCADE,blank=True,null=True)
-    interest_Expected = models.DateField(help_text="Please use the following format: <em>DD-MM-YYYY</em>.")
-    summary = models.CharField(max_length=500)
+class Institution(models.Model):
+    i_user = models.ForeignKey(UserAttribute, on_delete=models.CASCADE)
+    institution_name = models.CharField(max_length=200)
+    institution_department = models.CharField(max_length=200)
+    country = models.CharField(max_length=100)
+    city = models.CharField(max_length=150)
+    erasmusCN = models.CharField(max_length=150) #ERASMUS Charter Number
+    website = models.CharField(max_length=500)
 
     def __str__(self):
-        return self.institution
+        return self.institution_name
+
+
+class SubmitRequest(models.Model):
+    sr_user = models.ForeignKey(User, on_delete=models.CASCADE)
+    sr_institution=models.ForeignKey(Institution, on_delete=models.CASCADE, blank=False,null=False)
+    sr_program = models.ForeignKey(Programme, on_delete=models.CASCADE, blank=False,null=False,default=None)
+    # institution= models.ForeignKey(Institution, on_delete=models.CASCADE,blank=True,null=True)
+    title = models.CharField(max_length=150)
+    summary = models.CharField(max_length=500)
+    interest_Expected = models.DateField(help_text="Please use the following format: <em>DD-MM-YYYY</em>.")
+
+
+    def __str__(self):
+        return self.summary
 
 
 class Interest(models.Model):
