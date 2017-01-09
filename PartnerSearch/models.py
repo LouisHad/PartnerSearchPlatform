@@ -49,7 +49,7 @@ class SubmitRequest(models.Model):
 
 
     def __str__(self):
-        return self.summary
+        return self.title
 
 
 class Interest(models.Model):

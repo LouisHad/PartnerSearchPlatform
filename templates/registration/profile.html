@@ -1,0 +1,163 @@
+{% extends 'blocksTmpl/BaseTmpl.html' %}
+{% load staticfiles %}
+
+{% block bodyContent %}
+LOLOLLOLOLasa
+    <div class="row">
+        <div class="col-md-6">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Form from Generals</h3>
+                </div>
+                <form role="FORM">
+                    <div class="box-body">
+                        <div class="form-group">
+                              <label for="exampleInputEmail1">Email address</label>
+                              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                        </div>
+                        <div class="form-group">
+                              <label for="exampleInputPassword1">Password</label>
+                              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputFile">File input</label>
+                            <input type="file" id="exampleInputFile">
+                            <p class="help-block">Example block-level help text here.</p>
+                        </div>
+                        <div class="checkbox">
+                              <label>
+                                  <input type="checkbox"> Check me out
+                              </label>
+                        </div>
+                  </div>
+                  <!-- /.box-body -->
+
+                  <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                  </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="box collapsed-box box-success">
+                <div class="box-header  with-border">
+                  <h3 class="box-title">Removable</h3>
+
+                  <div class="box-tools pull-right">
+                      <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div>
+                  <!-- /.box-tools -->
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                  The body of the box
+                </div>
+            <!-- /.box-body -->
+            </div>
+
+            <div class="box box-success box-solid">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Removable</h3>
+
+                  <div class="box-tools pull-right">
+{#                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>#}
+                  </div>
+                  <!-- /.box-tools -->
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                  The body of the box
+                </div>
+                <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+            <!-- Widget: user widget style 1 -->
+            <div class="box box-widget widget-user-2">
+            <!-- Add the bg color to the header using any of the bg-* classes -->
+              <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+                <div class="widget-user-header bg-yellow">
+                    <div class="widget-user-image">
+                        <img class="img-circle" src="{% static 'dist/img/user7-128x128.jpg' %}" alt="User Avatar">
+                    </div>
+                    <!-- /.widget-user-image -->
+                    <h3 class="widget-user-username">Nadia Carmichael</h3>
+                    <h5 class="widget-user-desc">Lead Developer</h5>
+                </div>
+                <div class="box-footer no-padding">
+                    <ul class="nav nav-stacked">
+                        <p></p>
+                        <li><a href="#">Projects <span class="pull-right badge bg-blue">31</span></a></li>
+                        <li><a href="#">Tasks <span class="pull-right badge bg-aqua">5</span></a></li>
+                        <li><a href="#">Completed Projects <span class="pull-right badge bg-green">12</span></a></li>
+                        <li><a href="#">Followers <span class="pull-right badge bg-red">842</span></a></li>
+                    </ul>
+                </div>
+                <div class="box-body">
+                    <p class="lead">
+                        <b>AdminLTE</b> is a popular open source WebApp template for admin dashboards and control panels.
+                        It is a responsive HTML template that is based on the CSS framework Bootstrap 3.
+                        It utilizes all of the Bootstrap components in its design and re-styles many
+                        commonly used plugins to create a consistent design that can be used as a user
+                        interface for backend applications. AdminLTE is based on a modular design, which
+                        allows it to be easily customized and built upon. This documentation will guide you through
+                        installing the template and exploring the various components that are bundled with the template.
+                      </p>
+                </div>
+          </div>
+          <!-- /.widget-user -->
+             <!-- Widget: user widget style 1 -->
+            <div class="box box-widget widget-user-2">
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove">
+                        <i class="fa fa-times"></i>
+                    </button>
+              </div>
+                <!-- Add the bg color to the header using any of the bg-* classes -->
+                    <div class="widget-user-header bg-yellow">
+                        <div class="widget-user-image">
+                            <img class="img-circle" src="{% static 'dist/img/user7-128x128.jpg' %}" alt="User Avatar">
+                        </div>
+                    <!-- /.widget-user-image -->
+                        <h3 class="widget-user-username">Nadia Carmichael</h3>
+                        <h5 class="widget-user-desc">Lead Developer</h5>
+                    </div>
+                    <div class="box-footer no-padding">
+                        <ul class="nav nav-stacked">
+                            <p class="">
+                                <b>AdminLTE</b> is a popular open source WebApp template for admin dashboards and control panels.
+                                It is a responsive HTML template that is based on the CSS framework Bootstrap 3.
+                                It utilizes all of the Bootstrap components in its design and re-styles man/
+                            </p>
+                            <p></p>
+                            <li><a href="#">Projects <span class="pull-right badge bg-blue">31</span></a></li>
+                            <li><a href="#">Tasks <span class="pull-right badge bg-aqua">5</span></a></li>
+                            <li><a href="#">Completed Projects <span class="pull-right badge bg-green">12</span></a></li>
+                            <li><a href="#">Followers <span class="pull-right badge bg-red">842</span></a></li>
+                        </ul>
+                    </div>
+                  <div class="box-body">
+                        <p class="">
+                            <b>AdminLTE</b> is a popular open source WebApp template for admin dashboards and control panels.
+                            It is a responsive HTML template that is based on the CSS framework Bootstrap 3.
+                            It utilizes all of the Bootstrap components in its design and re-styles many
+                            commonly used plugins to create a consistent design that can be used as a user
+                            interface for backend applications. AdminLTE is based on a modular design, which
+                            allows it to be easily customized and built upon. This documentation will guide you through
+                            installing the template and exploring the various components that are bundled with the template.
+                        </p>
+                  </div>
+          </div>
+          <!-- /.widget-user -->
+        </div>
+    </div>
+{% endblock %}
