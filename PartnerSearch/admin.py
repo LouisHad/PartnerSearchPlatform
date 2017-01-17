@@ -7,7 +7,7 @@ from .models import *
 admin.site.register(Programme)
 admin.site.register(UserAttribute)
 
-admin.site.register(Interest)
+admin.site.register(UserInterestTo)
 
 
 class InstitutionAdmin(admin.ModelAdmin):
@@ -15,7 +15,7 @@ class InstitutionAdmin(admin.ModelAdmin):
 
 
 class SubmitRequestAdmin(admin.ModelAdmin):
-    list_display = ('sr_user','interest_Expected','interest_Expected')
+    list_display = ('sr_user','sr_institution','type_of_Submit')
 
 
 admin.site.register(Institution,InstitutionAdmin)

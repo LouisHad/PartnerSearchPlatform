@@ -7,31 +7,70 @@
         <div class="col-md-8">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Form from Generals</h3>
+                    <h3 class="box-title">Form - Add Institution or Department</h3>
                 </div>
-                <form role="FORM">
+                <form action="{% url 'institution' %}" role="FORM" method="post">
+                    {% csrf_token %}
                     <div class="box-body">
                         <div class="form-group">
-                              <label for="exampleInputEmail1">Email address</label>
-                              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                              <label for="exampleInputEmail1">Institution Name</label>
+                              <input type="text" class="form-control" id="institution_name" name="institution_name" placeholder="Enter Institution Name" required>
                         </div>
                         <div class="form-group">
-                              <label for="exampleInputPassword1">Password</label>
-                              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                              <label for="exampleInputEmail1">Department Name</label>
+                              <input type="text" class="form-control" id="department_name" name="department_name" placeholder="Enter Department Name" required>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputFile">File input</label>
-                            <input type="file" id="exampleInputFile">
-                            <p class="help-block">Example block-level help text here.</p>
+                            <label for="exampleInputPassword1">ERASMUS Charter Number</label>
+{#                            {{ form.country }}#}
+                            <input type="text" class="form-control" id="inst_number" name="inst_number" placeholder="Enter ERASMUS Charter Number" required>
                         </div>
-                        <div class="checkbox">
-                              <label>
-                                  <input type="checkbox"> Check me out
-                              </label>
+                        <div class="row">
+                           <div class="col-md-6">
+                               <div class="form-group">
+                                    <label>Countries</label>
+                                    <select class="form-control select2" style="width: 100%" name="country" required>
+                                        <option value="">...</option>
+                                        {% for country in countries %}
+                                            <option value="{{ country.id }}">{{ country }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                           </div>
+                           <div class="col-md-6">
+                               <div class="form-group">
+                                    <label>City</label>
+                                    <input type="text" class="form-control" id="city" name="city" placeholder="City" required>
+                                </div>
+                           </div>
                         </div>
+{#                        <div class="form-group">#}
+{#                            <label>Countries</label>#}
+{#                            <select class="form-control select2" style="width: 100%" name="country" required>#}
+{#                                <option value="">...</option>#}
+{#                                {% for country in countries %}#}
+{#                                    <option value="{{ country.id }}">{{ country }}</option>#}
+{#                                {% endfor %}#}
+{#                            </select>#}
+{#                        </div>#}
+{#                        <div class="form-group">#}
+{#                            <label>City</label>#}
+{#                            <input type="text" class="form-control" id="city" name="city" placeholder="City" required>#}
+{#                        </div>#}
+                        <div class="form-group">
+                              <label for="exampleInputPassword1">Website</label>
+                              <input type="text" class="form-control" id="inst_website" name="inst_website" placeholder="Website" required>
+                        </div>
+{#                        <div class="form-group">#}
+{#                              <label for="exampleInputPassword1">Contact person</label>#}
+{#                              <input type="text" class="form-control" id="inst_contact" name="inst_contact" placeholder="Contact person" required>#}
+{#                        </div>#}
+{#                        <div class="form-group">#}
+{#                              <label for="exampleInputPassword1">Email</label>#}
+{#                              <input type="email" class="form-control" id="inst_email" name="inst_email" placeholder="Email" required>#}
+{#                        </div>#}
                   </div>
                   <!-- /.box-body -->
-
                   <div class="box-footer">
                         <button type="submit" class="btn btn-primary">Submit</button>
                   </div>

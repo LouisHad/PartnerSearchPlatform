@@ -25,6 +25,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   -->
   <link rel="stylesheet" href="{% static 'dist/css/skins/skin-blue.min.css' %}">
 
+    <!-- Select2-->
+    <link rel="stylesheet" href="{% static 'plugins/select2/select2.min.css' %}">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -59,11 +61,11 @@ desired effect
   <header class="main-header">
 
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="{% url 'profile' %}" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
+      <span class="logo-mini"><b>E</b>AEC</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Admin</b>LTE</span>
+      <span class="logo-lg"><b>EAEC</b> Partner Search</span>
     </a>
 
     <!-- Header Navbar -->
@@ -232,10 +234,10 @@ desired effect
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="{% static 'dist/img/user2-160x160.jpg' %}" class="img-circle" alt="User Image">
+          <img src="{% static 'dist/img/user.png' %}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Alexander Pierce</p>
+          <p>{{ username }}</p>
           <!-- Status -->
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
@@ -257,17 +259,45 @@ desired effect
       <ul class="sidebar-menu">
         <li class="header">HEADER</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
-        <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
+
         <li class="treeview">
-          <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
+            <a href="#"><i class="fa fa-link"></i> <span>Profile info</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="#">Edit Profile</a></li>
+                <li><a href="{% url 'institution' %}">Add Institution</a></li>
+{#                <li><a href="{% url 'institution' %}">Add Institution</a></li>#}
+          </ul>
+        </li>
+        {#active#}
+        <li class="">
+            <a href="#"><i class="fa fa-link"></i><span>For Exchange</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="{% url 'exchangeForm' %}">Make you institution available as<br> partner</a></li>
+                <li><a href="#">View listing of available partners </a></li>
+                <li><a href="{% url 'exchangeRequest' %}">View invitations for partners <br>published by other institutions</a> </li>
+                <li><a href="#">Press here to submit a request <br>for partner search</a> </li>
+            </ul>
+        </li>
+        </li>
+        <li class="treeview">
+          <a href="#"><i class="fa fa-link"></i> <span>For Funded</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#">Link in level 2</a></li>
-            <li><a href="#">Link in level 2</a></li>
+                <li><a href="{% url 'fundedForm' %}">Make you institution available<br> as partner</a></li>
+                <li><a href="#">View listing of available partners </a></li>
+                <li><a href="{% url 'fundedRequest' %}">Submit a request for partner search</a></li>
+                <li><a href="#">View invitations for partner <br>published by other institutions </a></li>
           </ul>
         </li>
       </ul>
@@ -281,8 +311,8 @@ desired effect
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Page Header
-        <small>Optional description</small>
+        {{ page_header }}
+        <small>{{ page_desc }}</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
@@ -399,7 +429,24 @@ desired effect
 <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
 <!-- AdminLTE App -->
 <script src="{% static 'dist/js/app.min.js' %}"></script>
+<!-- select2 -->
+<script src="{% static 'plugins/select2/select2.full.min.js' %}"></script>
+<!-- InputMask -->
+<script src="{% static 'plugins/input-mask/jquery.inputmask.js' %}"></script>
+<script src="{% static 'plugins/input-mask/jquery.inputmask.date.extensions.js' %}"></script>
+<script src="{% static 'plugins/input-mask/jquery.inputmask.extensions.js' %}"></script>
 
+<script>
+    $(function(){
+        $(".select2").select2();
+
+            //Datemask dd/mm/yyyy
+        $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
+
+        //Money Euro
+        $("[data-mask]").inputmask();
+    });
+</script>
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the

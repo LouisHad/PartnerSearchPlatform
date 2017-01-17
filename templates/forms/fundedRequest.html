@@ -1,0 +1,78 @@
+{% extends 'blocksTmpl/BaseTmpl.html' %}
+{% load staticfiles %}
+
+{% block bodyContent %}
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Form - Add Institution or Department</h3>
+                </div>
+                <form action="{% url 'exchangeRequest' %}" role="FORM" method="post">
+                    {% csrf_token %}
+                    <div class="box-body">
+                        <div class="form-group">
+                                <label for="exampleInputEmail1">Select Institution</label>
+                                <select class="form-control select2" style="width: 100%" name="inst" required>
+                                    <option value="">...</option>
+                                    {% for institution in institutions %}
+                                        <option value="{{ institution.id }}">{{ institution }}-{{ institution.institution_department }}-{{ institution.country }}</option>
+                                    {% endfor %}
+                                </select>
+                        </div>
+                        <div class="form-group">
+                              <label for="exampleInputEmail1">PIC Number</label>
+                              <input type="text" class="form-control" placeholder="PIC Number" name="picNumber">
+                        </div>
+                        <div class="form-group">
+                              <label for="exampleInputPassword1">Programme interested in</label>
+                                <select class="form-control select2" style="width: 100%" name="prog" required>
+                                    <option value="">Select Programme</option>
+                                    {% for pro in programmes %}
+                                        <option value="{{ pro.id }}">{{ pro }}</option>
+                                    {% endfor %}
+                                </select>
+                        </div>
+                        <div class="form-group">
+                              <label for="exampleInputPassword1">Types of partners sought</label>
+                              <textarea type="text" class="form-control" id="inst_contact" name="typeOfPart" placeholder="Types of partners sought" required></textarea>
+                        </div>
+                        <!-- Date dd/mm/yyyy -->
+                          <div class="form-group">
+                                <label>Deadline of the Funding Programme Call:</label>
+
+                                <div class="input-group">
+                                      <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                      </div>
+                                      <input name="inst_date" type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
+                                </div>
+                                <!-- /.input group -->
+                          </div>
+                          <!-- /.form group -->
+
+                        <!-- Date dd/mm/yyyy -->
+                          <div class="form-group">
+                                <label>Interest expected by :</label>
+
+                                <div class="input-group">
+                                      <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                      </div>
+                                      <input name="inst_date" type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
+                                </div>
+                                <!-- /.input group -->
+                          </div>
+                          <!-- /.form group -->
+                  </div>
+                  <!-- /.box-body -->
+                  <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                  </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

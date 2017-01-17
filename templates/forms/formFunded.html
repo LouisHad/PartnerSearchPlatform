@@ -7,27 +7,38 @@
         <div class="col-md-8">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Form from Generals</h3>
+                    <h3 class="box-title">Partner Invitations for Exchange of Students,
+                        Teachers and Staff (HORIZON, ERASMUS+, other)</h3>
                 </div>
-                <form role="FORM">
+                <form role="FORM" method="post" action="{% url 'fundedForm' %}">
+                {% csrf_token %}
                     <div class="box-body">
                         <div class="form-group">
-                              <label for="exampleInputEmail1">Email address</label>
-                              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                            <label>Institution</label>
+                            <select class="form-control select2" style="width: 100%" name="inst" required>
+                                <option value="">Select Institution</option>
+                                {% for insti in institutions %}
+                                    <option value="{{ insti.id }}">{{ insti }}</option>
+                                {% endfor %}
+                            </select>
                         </div>
                         <div class="form-group">
-                              <label for="exampleInputPassword1">Password</label>
-                              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                              <label for="exampleInputEmail1">PIC Number</label>
+                              <input type="text" class="form-control" placeholder="Enter PIC Number" name="picNum">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputFile">File input</label>
-                            <input type="file" id="exampleInputFile">
-                            <p class="help-block">Example block-level help text here.</p>
+                              <label for="exampleInputPassword1">Programme interested in</label>
+                                <select class="form-control select2" style="width: 100%" name="prog" required>
+                                    <option value="">Select Programme</option>
+                                    {% for pro in programs %}
+                                        <option value="{{ pro.id }}">{{ pro.programmeName }}</option>
+                                    {% endfor %}
+                                </select>
+{#                              <input type="text" class="form-control" placeholder="Enter Programme interested in">#}
                         </div>
-                        <div class="checkbox">
-                              <label>
-                                  <input type="checkbox"> Check me out
-                              </label>
+                        <div class="form-group">
+                              <label for="exampleInputPassword1">Shrort Summary of the Request</label>
+                              <textarea type="text" class="form-control" id="inst_contact" name="desc" placeholder="{{ description }}" required></textarea>
                         </div>
                   </div>
                   <!-- /.box-body -->
@@ -39,5 +50,4 @@
             </div>
         </div>
     </div>
-
 {% endblock %}
